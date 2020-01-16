@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "ActivityFeedPage";
+}
+
+@model Microsoft.Teams.Samples.ActivityFeedSample.Models.ActivityFeedModel
+
+<h2>Activity Feed Demo</h2>
+@{
+    <h3>Click this button to get an activity feed notification.</h3>
+    <button onclick="sendActivityFeedNotification()">Click Me!</button>
+}
+
+<script>
+    function sendActivityFeedNotification() {
+        console.log("Hi");
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("SendActivityFeedNotification", "HomeController")',
+            data: "{ 'tenantId': '@Model.TenantId', 'teamId': '@Model.TeamId', 'channelId': '@Model.ChannelId', 'userId': '@Model.UserId' }",
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function () {
+            }
+        });
+    }
+</script>

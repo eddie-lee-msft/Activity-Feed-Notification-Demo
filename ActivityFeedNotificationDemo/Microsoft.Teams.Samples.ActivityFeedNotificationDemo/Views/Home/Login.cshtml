@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@{
+    <h3>Click this button to authenticate and use the demo.</h3>
+    <button onclick="showLogin()">Click Me!</button>
+}
+
+<script>
+    function showLogin() {
+        microsoftTeams.authentication.authenticate({
+            url: window.location.origin + "/Auth",
+            width: 600,
+            height: 535,
+            successCallback: function (result) {
+                window.location.reload(true);
+                getUserProfile(result.accessToken);
+            },
+            failureCallback: function (reason) {
+                // Its landing here even on success
+                window.location.reload(true);
+                handleAuthError(reason);
+            }
+        });
+    }
+</script>

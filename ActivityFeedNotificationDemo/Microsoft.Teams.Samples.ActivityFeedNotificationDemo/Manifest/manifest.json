@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+
+  "webApplicationInfo": {
+    "id": "7e5a8cdf-256e-4619-ab5a-1cf952ec9821",
+    "resource": "https://AkjRscBasedStoreApp"
+  },
+
+  "version": "1.0.10",
+  "id": "55cbeb0e-e7be-4ab3-b9bf-ef919406a855",
+  "packageName": "com.contoso.activityfeednotification.ngrok",
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://www.microsoft.com",
+    "privacyUrl": "https://www.microsoft.com/privacy",
+    "termsOfUseUrl": "https://www.microsoft.com/termsofuse"
+  },
+  "icons": {
+    "outline": "contoso20x20.png",
+    "color": "contoso96x96.png"
+  },
+  "name": {
+    "short": "AFN Demo (ngrok)",
+    "full": "Activity Feed Notification Demo (ngrok)"
+  },
+  "description": {
+    "short": "Try out Activity Feed Notification API",
+    "full": "This app lets you try out the Activity Feed Notification API."
+  },
+  "accentColor": "#60A18E",
+  "activities": {
+    "activityTypes": [
+      {
+        "type": "taskCreated",
+        "description": "Task Created Activity",
+        "templateText": "{actor} created task {taskId} for you"
+      },
+      {
+        "type": "teamMention",
+        "description": "Team Mention Activity",
+        "templateText": "{actor} mentioned random team"
+      },
+      {
+        "type": "channelMention",
+        "description": "Channel Mention Activity",
+        "templateText": "{actor} mentioned random channel"
+      },
+      {
+        "type": "userMention",
+        "description": "Personal Mention Activity",
+        "templateText": "{actor} mentioned you dude"
+      }
+    ]
+  },
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://504a98ea.ngrok.io/configure",
+      "canUpdateConfiguration": false,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "staticTabs": [
+    {
+      "entityId": "com.contoso.activityfeednotification.tab",
+      "name": "Activity Feed Demo",
+      "contentUrl": "https://504a98ea.ngrok.io",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "504a98ea.ngrok.io",
+    "nkramerqnaapp.azurewebsites.net"
+  ]
+}
