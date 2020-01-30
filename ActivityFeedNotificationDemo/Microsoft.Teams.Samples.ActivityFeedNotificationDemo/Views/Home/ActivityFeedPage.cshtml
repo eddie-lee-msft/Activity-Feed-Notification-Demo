@@ -13,7 +13,6 @@
 
 <script>
     function sendActivityFeedNotification() {
-        console.log("Hi");
         $.ajax({
             type: 'POST',
             url: '@Url.Action("SendActivityFeedNotification", "HomeController")',

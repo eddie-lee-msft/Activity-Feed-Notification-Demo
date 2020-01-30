@@ -9,54 +9,19 @@
 
     public static class Authorization
     {
-        public static void DetermineAuthentication(HttpCookieCollection requestCookies)
+        public static bool IsUserAuthenticated(HttpCookieCollection requestCookies)
         {
             string userToken = GetTokenFromCookie(requestCookies);
-
-            if (userToken == null)
-                FailAuth(requestCookies);
-
-            // For debugging sanity, make sure the cookie is from the app ID you are actually 
-            // expecting, and not a leftover of a previous version of your app.
-            if (GetTokenClaim(userToken, "appid") != GetGraphAppId())
-                FailAuth(requestCookies);
+            return userToken != null && GetTokenClaim(userToken, "appid") == GetGraphAppId();
         }
 
         public static string GetTokenFromCookie(HttpCookieCollection cookies)
         {
             var cookie = cookies["GraphToken"];
-
-            if (cookie == null)
-                return null;
-            else
-                return cookie.Value;
+            return cookie?.Value;
         }
 
-        private static void FailAuth(HttpCookieCollection requestCookies)
-        {
-            if (requestCookies["GraphToken"] != null)
-            {
-                // Remove invalid cookie by expiring it
-                requestCookies["GraphToken"].Expires = DateTime.Now.AddDays(-1);
-                requestCookies["GraphToken"].Value = "invalid";
-            }
-
-            throw new Exception("Unauthorized user!");
-        }
-
-        private static string GetTokenClaim(string token, string claimType)
-        {
-            var jwt = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler().ReadJwtToken(token);
-            foreach (var claim in jwt.Claims)
-            {
-                if (claim.Type == claimType)
-                    return claim.Value;
-            }
-
-            return null;
-        }
-
-        public static async Task<string> GetAppPermissionToken(string tenant, Nullable<bool> useRSC)
+        public static async Task<string> GetAppPermissionToken(string tenant)
         {
             string appId = GetGraphAppId();
             string appSecret = Uri.EscapeDataString(GetGraphAppPassword());
@@ -85,6 +50,18 @@
             // Never put an application permissions token in a cookie, though.
         }
 
+        // Returns the appid for user delegated use
+        public static string GetGraphAppId()
+        {
+            return ConfigurationManager.AppSettings["GraphAppId"];
+        }
+
+        // Returns the appid for user delegated use
+        public static string GetGraphAppPassword()
+        {
+            return ConfigurationManager.AppSettings["GraphAppPassword"];
+        }
+
         // Also store the token in a cookie so the client can pass it back to us later
         private static string ParseOauthResponse(string oathResponse)
         {
@@ -92,16 +69,26 @@
             return oathResponse.Split('&')[0].Split('=')[1];
         }
 
-        // Returns the appid for user delegated use
-        public static string GetGraphAppId()
+        private static void FailAuth(HttpCookieCollection requestCookies)
         {
-            return ConfigurationManager.AppSettings["GraphNoRSCAppId"];
+            if (requestCookies["GraphToken"] != null)
+            {
+                // Remove invalid cookie by expiring it
+                requestCookies["GraphToken"].Expires = DateTime.Now.AddDays(-1);
+                requestCookies["GraphToken"].Value = "invalid";
+            }
         }
 
-        // Returns the appid for user delegated use
-        public static string GetGraphAppPassword()
+        private static string GetTokenClaim(string token, string claimType)
         {
-            return ConfigurationManager.AppSettings["GraphNoRSCAppPassword"];
+            var jwt = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler().ReadJwtToken(token);
+            foreach (var claim in jwt.Claims)
+            {
+                if (claim.Type == claimType)
+                    return claim.Value;
+            }
+
+            return null;
         }
     }
 }

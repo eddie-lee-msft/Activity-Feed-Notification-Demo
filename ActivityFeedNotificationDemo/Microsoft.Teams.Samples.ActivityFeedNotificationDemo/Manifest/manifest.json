@@ -7,8 +7,8 @@
     "resource": "https://AkjRscBasedStoreApp"
   },
 
-  "version": "1.0.10",
-  "id": "55cbeb0e-e7be-4ab3-b9bf-ef919406a855",
+  "version": "1.0.11",
+  "id": "7e5a8cdf-256e-4619-ab5a-1cf952ec9833",
   "packageName": "com.contoso.activityfeednotification.ngrok",
   "developer": {
     "name": "Contoso",
@@ -17,12 +17,12 @@
     "termsOfUseUrl": "https://www.microsoft.com/termsofuse"
   },
   "icons": {
-    "outline": "contoso20x20.png",
-    "color": "contoso96x96.png"
+    "outline": "AF20x20.png",
+    "color": "AF96x96.png"
   },
   "name": {
-    "short": "AFN Demo (ngrok)",
-    "full": "Activity Feed Notification Demo (ngrok)"
+    "short": "Edward's AFN Demo 2",
+    "full": "Edward's AFN Demo 2"
   },
   "description": {
     "short": "Try out Activity Feed Notification API",
@@ -55,10 +55,11 @@
   },
   "configurableTabs": [
     {
-      "configurationUrl": "https://504a98ea.ngrok.io/configure",
+      "configurationUrl": "https://6b6c26f1.ngrok.io/configure",
       "canUpdateConfiguration": false,
       "scopes": [
-        "team"
+        "team",
+        "groupchat"
       ]
     }
   ],
@@ -66,7 +67,7 @@
     {
       "entityId": "com.contoso.activityfeednotification.tab",
       "name": "Activity Feed Demo",
-      "contentUrl": "https://504a98ea.ngrok.io",
+      "contentUrl": "https://6b6c26f1.ngrok.io ",
       "scopes": [
         "personal"
       ]
@@ -77,7 +78,7 @@
     "messageTeamMembers"
   ],
   "validDomains": [
-    "504a98ea.ngrok.io",
+    "f77dee3b.ngrok.io",
     "nkramerqnaapp.azurewebsites.net"
   ]
 }
