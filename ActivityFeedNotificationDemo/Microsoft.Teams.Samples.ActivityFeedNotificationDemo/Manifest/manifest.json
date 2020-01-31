@@ -8,7 +8,7 @@
   },
 
   "version": "1.0.11",
-  "id": "7e5a8cdf-256e-4619-ab5a-1cf952ec9833",
+  "id": "7e5a8cdf-256e-4619-ab5a-1cf952ec9834",
   "packageName": "com.contoso.activityfeednotification.ngrok",
   "developer": {
     "name": "Contoso",
@@ -21,8 +21,8 @@
     "color": "AF96x96.png"
   },
   "name": {
-    "short": "Edward's AFN Demo 2",
-    "full": "Edward's AFN Demo 2"
+    "short": "Edward's AFN Demo 4",
+    "full": "Edward's AFN Demo 4"
   },
   "description": {
     "short": "Try out Activity Feed Notification API",
