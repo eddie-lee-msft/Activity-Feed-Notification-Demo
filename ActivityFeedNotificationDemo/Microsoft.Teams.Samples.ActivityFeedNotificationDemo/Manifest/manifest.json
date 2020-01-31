@@ -21,8 +21,8 @@
     "color": "AF96x96.png"
   },
   "name": {
-    "short": "Edmund's AFN Demo",
-    "full": "Edmund's AFN Demo"
+    "short": "Random AFN Demo",
+    "full": "Random AFN Demo"
   },
   "description": {
     "short": "Try out Activity Feed Notification API",
@@ -55,7 +55,7 @@
   },
   "configurableTabs": [
     {
-      "configurationUrl": "https://6b6c26f1.ngrok.io/configure",
+      "configurationUrl": "https://b6b46d07.ngrok.io/configure",
       "canUpdateConfiguration": false,
       "scopes": [
         "team",
@@ -67,7 +67,7 @@
     {
       "entityId": "com.contoso.activityfeednotification.tab",
       "name": "Activity Feed Demo",
-      "contentUrl": "https://6b6c26f1.ngrok.io ",
+      "contentUrl": "https://b6b46d07.ngrok.io ",
       "scopes": [
         "personal"
       ]
@@ -78,7 +78,7 @@
     "messageTeamMembers"
   ],
   "validDomains": [
-    "f77dee3b.ngrok.io",
+    "b6b46d07.ngrok.io",
     "nkramerqnaapp.azurewebsites.net"
   ]
 }

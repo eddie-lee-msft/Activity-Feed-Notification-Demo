@@ -40,7 +40,7 @@ Install into a team (part 1):
 - Go to 'Apps' near the top and click 'Upload a custom app'. Find your .zip file and click 'Add'.
 
 Install into a team (part 2):
-- [Retrieve the Teams App ID of the app you just installed, see Example 2](https://docs.microsoft.com/en-us/graph/api/teamsappinstallation-list?view=graph-rest-1.0&tabs=http). Save it somewhere.
+- [Retrieve the Teams App ID of the app you just installed, see Example 2](https://docs.microsoft.com/en-us/graph/api/teamsappinstallation-list?view=graph-rest-1.0&tabs=http). You may have to hit the canary dev endpoint instead of the prod graph endpoint (https://canary.graph.microsoft.com/testprodbetatestTeamsGraphSvcDev/). Save it somewhere.
 - Go to the code and within the 'web.config' file, replace the 'GraphAppId' value with the Application ID above and the 'GraphAppPassword' value with the client secret created above. At the same time, replace the 'TeamsAppId' value with the Teams App ID you retrieved from above.
 - Now run the code from Visual Studio. A browser window will open with the address 'localhost:3333'. You can just ignore that.
 - Now create a new tab for that app under any channel in the team. Click 'Save' on the configuration popup.
