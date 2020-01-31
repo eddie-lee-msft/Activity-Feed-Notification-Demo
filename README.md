@@ -47,4 +47,3 @@ Install into a team (part 2):
 
 You're done with setup!
 Now click 'Click Me!' and a notification should pop up that brings you to the Team/Channel that the app was installed onto.
-

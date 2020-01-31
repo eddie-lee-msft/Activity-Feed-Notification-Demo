@@ -222,10 +222,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ActivityFeedPage.cshtml" />
-    <Content Include="Views\Home\Auth.cshtml" />
-    <Content Include="Views\Home\AuthDone.cshtml" />
     <Content Include="Views\Home\Configure.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
