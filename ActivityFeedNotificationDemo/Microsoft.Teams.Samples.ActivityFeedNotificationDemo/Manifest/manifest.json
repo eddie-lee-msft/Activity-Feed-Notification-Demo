@@ -7,8 +7,8 @@
     "resource": "https://AkjRscBasedStoreApp"
   },
 
-  "version": "1.0.11",
-  "id": "7e5a8cdf-256e-4619-ab5a-1cf952ec9835",
+  "version": "1.0.13",
+  "id": "7e5a8cdf-256e-4619-ab5a-1cf952ec9837",
   "packageName": "com.contoso.activityfeednotification.ngrok",
   "developer": {
     "name": "Contoso",
@@ -21,8 +21,8 @@
     "color": "AF96x96.png"
   },
   "name": {
-    "short": "Random AFN Demo",
-    "full": "Random AFN Demo"
+    "short": "Random AFN Demo 2",
+    "full": "Random AFN Demo 2"
   },
   "description": {
     "short": "Try out Activity Feed Notification API",
@@ -55,7 +55,7 @@
   },
   "configurableTabs": [
     {
-      "configurationUrl": "https://b6b46d07.ngrok.io/configure",
+      "configurationUrl": "https://32b3d281.ngrok.io/configure",
       "canUpdateConfiguration": false,
       "scopes": [
         "team",
@@ -67,7 +67,7 @@
     {
       "entityId": "com.contoso.activityfeednotification.tab",
       "name": "Activity Feed Demo",
-      "contentUrl": "https://b6b46d07.ngrok.io ",
+      "contentUrl": "https://32b3d281.ngrok.io ",
       "scopes": [
         "personal"
       ]

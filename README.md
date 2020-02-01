@@ -12,18 +12,21 @@ Key files:
 
 git clone https://github.com/eddie-lee-msft/Activity-Feed-Notification-Demo.git
 
-Spin up ngrok:
-- [See the 'Locally hosted' section of this to spin up ngrok](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/debug)
-- The port for this app is '3333'.
-- You should get some ngrok link like 'https://{ngrokid}.ngrok.io'. Save this link somewhere.
-
 Azure Active Directory Application setup:
-- [Register the app on Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+- [Register an app on Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
 - The app should be registered under the tenant you're (eventually) installing this demo app in.
 - You can name this app whatever you want - just don't forget what the name is.
 - You can just leave the redirect URI blank.
 - Grab the 'Application (client) ID' and save it somewhere.
 - Go to 'Certificates & secrets' and create a new client secret. Save the value somewhere.
+- You will also need to add relevant permissions to allow your app to send the notification. Head to 'API permissions' on the left pane, and add "Directory.ReadWrite.All" and "TeamsActivity.Send". These should be under the "Microsoft Graph" pane.
+
+**Note: The Application ID you receive in this step must be whitelisted - otherwise you will eventually receive a 403 (Forbidden). Please let us know if you'd like to whitelist your demo app ID.**
+
+Spin up ngrok:
+- [See the 'Locally hosted' section of this to spin up ngrok](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/debug#locally-hosted)
+- The port for this app is '3333'.
+- You should get some ngrok link like 'https://{ngrokid}.ngrok.io'. Save this link somewhere.
 
 Manifest setup:
 - Find the 'manifest.json' file in the code. This should be in the 'Manifest' folder.
@@ -36,14 +39,13 @@ Install into a team (part 1):
 - Go to https://teams.microsoft.com and launch the webclient.
 - Go to 'devspaces' or 'cdshadow' service.
 - Go to 'Teams', select a team you want to install the app into and then click 'Manage Team'.
-- Click 'Upload a custom app' 
 - Go to 'Apps' near the top and click 'Upload a custom app'. Find your .zip file and click 'Add'.
 
 Install into a team (part 2):
 - [Retrieve the Teams App ID of the app you just installed, see Example 2](https://docs.microsoft.com/en-us/graph/api/teamsappinstallation-list?view=graph-rest-1.0&tabs=http). You may have to hit the canary dev endpoint instead of the prod graph endpoint (https://canary.graph.microsoft.com/testprodbetatestTeamsGraphSvcDev/). Save it somewhere.
 - Go to the code and within the 'web.config' file, replace the 'GraphAppId' value with the Application ID above and the 'GraphAppPassword' value with the client secret created above. At the same time, replace the 'TeamsAppId' value with the Teams App ID you retrieved from above.
 - Now run the code from Visual Studio. A browser window will open with the address 'localhost:3333'. You can just ignore that.
-- Now create a new tab for that app under any channel in the team. Click 'Save' on the configuration popup.
+- Now create a new tab for that app under any channel in the team. Click 'Save' on the configuration popup. It may take some time for you to be able to click it, as there may be some network latency for the ngrok/localhost endpoint.
 
 You're done with setup!
 Now click 'Click Me!' and a notification should pop up that brings you to the Team/Channel that the app was installed onto.
